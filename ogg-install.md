@@ -27,7 +27,7 @@ show-dot --show-tilde'
 
 ## Verify
 ```sh
-[ogg$hostname oggsrc]$ lsnrctl status
+[ogghostname oggsrc]$ lsnrctl status
 $ ps -ef | grep pmon
 $ printenv
 ```
@@ -47,5 +47,3 @@ $ oggsrc
 $ ggsci
 > view param mgr
 ```
-
-

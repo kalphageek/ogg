@@ -1,27 +1,39 @@
 ## History
 ```sh
+$ alias
 $ oggsrc
 $ ggsci
 > history
 > !
 > !2
 ```
-
-* Add Extract
-```sh
-# Redolog를 현재 redolog가 만들어지는 지점부터 capture하겠다는 의미
-> Add Extract myext, Integrated TranLog, Begin Now
-# Local Trail을 lt라는 이름으로 만든다. default 500MB
-> Add ExtTrail /ggs/dirdat/lt, Extract myext
-# Extract 실행
-> start Extract myext
-# 일련의 명령을 스크립트로 실행
-> obey myscript.oby
+## 정보 보기
+```sql
+GGSCI>
+-- lacct 통계정보 보기
+> stats lacct
+-- lacct 상태정보 보기
+> status lacct
+-- extwest lag 보기
+> lag extwest
+-- lacct lag 보기
+> lag lacct
+-- Manager 상세정보 보기
+> view GGSEvt 
+-- Temporary 파타미터 적용
+> Send {Manager | Extract | Replicat}
+-- 처리 메시지 보기
+> view report lacct. 
+-- extwest의 redolog 처리 위치와 csn, checkpoint 정보 등 을 보여준다. Recovery echekpoint : 읽기는 했지만 처리가 안된것. Current checkpoint : trail file을 생성한 마지막 위치
+> info extwest showch
+> info ER *
 ```
-
-* OS 에서 Extract/Pump/Replicat 실행
-```sh
-$ ./extract paramfile ...
-$ ./extract pumpfile ...
-$ ./replicat paramfile ...
+## 삭제
+```sql
+> DBLogin UserIDAlias oggadmin_root
+> stop ER *
+-- not interactive
+> delete ER * !
+> info all
+> unregister extract extwest database
 ```
