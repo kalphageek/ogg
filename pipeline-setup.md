@@ -21,7 +21,7 @@ $ sqlplus / as sysdba
 
 ### Downstream
 1. Schmatrandata
-```sh
+```sql
 > ggsci
 > DBLogin UserID c##OGG_Admin@amer, Password oracle_4U
 > add schematrandata west [allcols]
@@ -55,29 +55,29 @@ AUTORESTART Replicat *, WaitMinutes 1, Retries 3
 > start mgr
 ```
 2. Add Extract
-```sh
-# 소스DB에 접속 (Alias 이용)
+```sql
+-- 소스DB에 접속 (Alias 이용)
 > DBLogin UserIdAlias oggalias
 > Edit Param myext
-# Extract를 소스DB에 먼저 등록, Integratd 방식인 경우 필요 
+-- Extract를 소스DB에 먼저 등록, Integratd 방식인 경우 필요 
 > Register Extract myext database
 # Redolog를 현재 redolog가 만들어지는 지점부터 capture하겠다는 의미
 > Add Extract myext, Integrated TranLog, Begin Now
 # Local Trail을 lt라는 이름으로 만든다. default 500MB
 > Add ExtTrail /ggs/dirdat/lt, Extract myext, Megabytes 10
-# Extract 실행
+-- Extract 실행
 > start Extract myext
-# 일련의 명령을 스크립트로 실행
+-- 일련의 명령을 스크립트로 실행
 > obey myscript.oby
 ```
 3. Add Pump
-```sh
-# Pump를 생성할 때는 Local Trail의 위치를 지정한다
+```sql
+-- Pump를 생성할 때는 Local Trail의 위치를 지정한다
 > Add Extract mypump, ExtTrailSource /ggs/dirdat/lt
 ```
 4. Add Initial Load Extract
-```sh
-# Initial Load Extract는 타입이 SourceIsTable이다
+```sql
+-- Initial Load Extract는 타입이 SourceIsTable이다
 > Add Extract myload, SourceIsTable
 ```
 
