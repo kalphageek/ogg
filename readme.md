@@ -3,6 +3,20 @@
 * 99401768.user04 / StSRLjcHY5
 * oracle / 
 
+## 참조
+* Trail file : https://docs.oracle.com/goldengate/c1221/gg-winux/GWUAD/oracle-goldengate-trail.htm#GWUAD741
+* GGSCI CMD : https://docs.oracle.com/goldengate/c1221/gg-winux/GWURF/summary-oracle-goldengate-commands.htm#GWURF884
+* LogDump Utility : https://docs.oracle.com/goldengate/1212/gg-winux/GLOGD/wu_logdump.htm#GLOGD107
+* Integrated Replicat View : https://docs.oracle.com/goldengate/1212/gg-winux/GLOGD/wu_logdump.htm#GLOGD107
+* Parameter File Option : https://docs.oracle.com/goldengate/c1221/gg-winux/GWURF/summary-oracle-goldengate-parameters.htm#GWURF1004
+* OGG 지원 DB : https://www.oracle.com/middleware/technologies/fusion-certification.html
+* Manager 설정 : https://docs.oracle.com/goldengate/c1221/gg-winux/GWUAD/configuring-manager-and-network-communications.htm#GWUAD152
+* Hearbeat
+    - https://docs.oracle.com/en/middleware/goldengate/core/19.1/gclir/add-heartbeattable.html#GUID-126E30A2-DC7A-4C93-93EC-0EB8BA7C13CB
+    - https://fatdba.com/2021/06/23/golden-gate-heartbeat-table-and-its-improvements-in-gg-19-1/
+    - https://xanpires.wordpress.com/2016/08/01/goldengate-12-2-heartbeat-table/
+
+
 ## Classic 아키텍처
 * cli 환경
 
@@ -171,3 +185,83 @@ $ ./replicat paramfile ...
 > User ID와 Password를 저장해서 Alias로 사용할 수 있다. DB 접속하는 User의 password를 보호하기 위한 작업.
 * 한군데서 만들고 dirwlt를 통째로 복사해서 사용 가능하다.
 
+## Lag
+* Lag은 send / lag 명령어를 통해 보는 것이 정확하다.
+
+## Macro
+* 반복작업을 쉽게 구현할 수 있으며, 재사용 가능
+* 매크로는 다른 매크로를 호출할 수 있다. 
+* 파라미터 파일 외부에 만들어서 Include할 수 있다.
+
+## Token
+* 사용자 정의 변수. Replicat에서 사용하기 위해 넘겨줄 수 있다
+
+## Compression
+* zlib로 압축. Pump에서 압축 설정
+
+## Event Action
+> Table 또는 Map과 연동해서 Report/Log 생성 등 특정 Action을 수행하게 할 수 있다
+
+## Microservices Architecture
+* 개요
+    * Classic 아키텍처와 병행해서 사용할 수 없다. 별도로 구성이 필요하다. 
+    * 소스/타겟DB 또는 Downstream DB에서 설치한다.
+    * OGG User를 별도로 생성한다. admin
+    * 소스나 타겟 한쪽만 MSA로 구성이 가능하다
+* 서비스
+    * Deployment
+        > 보통 하나의 소스DB 단위로 구성한다.
+    * Service Manager
+        > 전체 Deployment 환경과 프로세스를 관리
+    * Administration Server
+        > 하나의 Deployment를 관리
+    * Distribution Server
+        > Pump
+    * Receiver Server
+        > Collector
+    * Performance Metrics Server
+        > metrics service
+* 기타
+    * API : adminclinet (like ggsci )
+
+## Administration Server
+* Extract/Replicat 생성 및 Register
+* REST API, WEB UI 통해 운영
+* 자체 Web UI를 가지고 있음
+
+## Distribution Server
+* Pump와 동일한 역할
+* N:M 프로세싱이 가능하다
+* Data의 Transform은 못한다
+* 빠른 속도가 필요하면 UDP를 사용할 수 있다.
+* Classic방식의 Collector도 받을 수 있다.
+* Distribution Server -> Receiver Server간 Path를 생성 한다.
+
+## Receiver Server
+* Collecter와 동일한 역할
+* Distribution Server와 연동
+* 자체 Web UI를 가지고 있음
+
+## Performance Metrics Server
+* 자체 Web UI를 가지고 있음
+* 별도의 Server로 구성 가능
+* Multi Thread 방식
+* 처리하는 작업에 대한 상태/통계 정보를 제공한다.
+* 별도의 Repository DB를 사용할 수 있다 
+* 실시간 reource utilization 데이터를 제공한다.
+* 서드파티 metrics 툴이 있다
+* Active 프로세스 상태 정보를 제공한다.
+
+## adminclient
+* ggsci로 유사한 역할을 한다.
+* 독립적으로 실행 된다.
+* REST API 사용.
+
+## Lag 분석 지원
+* Hearbeat 테이블을 사용해서 분석하도록 지원한다
+* ggsci에서 설정 가능
+    * add heartbeattable
+* MSA 환경에서도 지원 (WEB UI)
+* heartbeat view 제공
+    * gg_lag
+    * gg_lag_history

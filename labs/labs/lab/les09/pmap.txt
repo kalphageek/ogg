@@ -1,0 +1,7 @@
+Extract pmap
+RmtHost easthost, Mgrport 7909, Compress
+RmtTrail ./dirdat/vv
+TargetDefs ./dirdef/usr_tgt.def
+UserIdAlias oggadmin_root
+COLMATCH PREFIX C_
+Map amer.west.customer, target euro.east.custmer, COLMAP (USEDEFAULTS, SURNAME = C_FAMILY_NAME, DATE_OF_BIRTH = C_DOB);

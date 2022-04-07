@@ -37,3 +37,27 @@ GGSCI>
 > info all
 > unregister extract extwest database
 ```
+
+## Stats
+```sql
+-- view the oldest open tansaction
+send extract ext_2a, showtrans
+send recicat rep_6c, status
+-- info extrac command to show checkpoints
+info extract ext_2a, showch
+-- info all command to view all OGG processes
+info all, allprocesses
+-- 1초당 처리하는 size
+stats replicat rep_tb, reportrate sec
+-- 전체 처리 size
+stats exwest, total
+```
+
+## 파라미터의 Start POS 변경
+```sql
+> alter rep_6a, extseqno 0, extrba 1437
+> alter replicat rep_6d, extseqno <seq_#>, extrba 0
+> alter extract ext_6d, etrollover
+> alter rextract ext_6d, begin 2020-11-08 12:30:40
+> add extract ext_tb2, tranlog, extqeqno <recovery_seq#>, extrba <recovery_checkpoint>
+```

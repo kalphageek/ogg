@@ -1,0 +1,13 @@
+Extract extwest
+UserIDAlias oggadmin_root
+TranlogOptions IntegratedParams (max_sga_size 256)
+ExtTrail ./dirdat/ew
+LOGALLSUPCOLS
+UPDATERECORDFORMAT COMPACT
+StatOptions ResetReportStats
+Report At 00:01
+ReportRollover At 00:01
+ReportCount Every 60 Seconds, Rate
+ReportCount Every 1000 Records
+Table AMER.WEST.ACCOUNT;
+

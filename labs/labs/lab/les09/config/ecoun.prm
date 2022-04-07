@@ -1,0 +1,9 @@
+Extract ecoun
+UserIdAlias oggadmin_root
+LOGALLSUPCOLS
+TRANLOGOPTIONS INTEGRATEDPARAMS (MAX_SGA_SIZE 128)
+UPDATERECORDFORMAT COMPACT
+Exttrail ./dirdat/cp
+SOURCECATALOG AMER
+Table west.country;
+

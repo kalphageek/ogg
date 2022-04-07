@@ -1,0 +1,9 @@
+Extract estrm
+ExtTrail ./dirdat/es
+UserIdAlias oggadmin_root
+LOGALLSUPCOLS
+TRANLOGOPTIONS INTEGRATEDPARAMS (MAX_SGA_SIZE 128)
+UPDATERECORDFORMAT COMPACT
+SOURCECATALOG AMER
+Table west.account, FILTER (account_balance > 20000);
+

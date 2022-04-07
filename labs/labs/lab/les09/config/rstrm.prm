@@ -1,0 +1,4 @@
+Replicat rstrm
+DiscardFile ./dirrpt/rstrm.dsc, Purge
+UserIDAlias oggadmin_euro
+Map amer.west.account, target euro.east.account, FILTER (ACCOUNT_NUMBER > 2000); 

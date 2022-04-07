@@ -1,0 +1,9 @@
+PORT 7809
+DynamicPortList 20000-20099
+PurgeOldExtracts ./dirdat/*, UseCheckPoints, MinKeepHours 2
+Autostart Extract E*
+Autorestart Extract *, WaitMinutes 1, Retries 3
+LagReportHours 1
+LagInfoMinutes 30
+LagCriticalMinutes 45
+

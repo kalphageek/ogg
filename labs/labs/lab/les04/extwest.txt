@@ -1,0 +1,13 @@
+Extract extwest
+UserIDAlias oggadmin_root
+TranlogOptions IntegratedParams (max_sga_size 256)
+ExtTrail ./dirdat/ew
+LOGALLSUPCOLS
+UPDATERECORDFORMAT COMPACT
+Table AMER.WEST.ACCOUNT;
+Table AMER.WEST.ACCOUNT_TRANS;
+Table AMER.WEST.BRANCH;
+Table AMER.WEST.BRANCH_ATM;
+Table AMER.WEST.TELLER;
+Table AMER.WEST.TELLER_TRANS;
+

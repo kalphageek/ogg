@@ -1,0 +1,6 @@
+Extract puevt
+RmtHost easthost, Mgrport 7909, Compress
+RmtTrail ./dirdat/ys
+Passthru
+Table amer.west.*;
+

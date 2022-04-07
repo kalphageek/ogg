@@ -1,0 +1,9 @@
+Extract emap
+UserIdAlias  oggadmin_root
+LOGALLSUPCOLS
+TRANLOGOPTIONS INTEGRATEDPARAMS (MAX_SGA_SIZE 128)
+UPDATERECORDFORMAT COMPACT
+Exttrail ./dirdat/mp
+SOURCECATALOG AMER
+Table west.customer;
+

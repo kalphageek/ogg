@@ -1,0 +1,6 @@
+SpecialRun
+End Runtime
+UserIdAlias oggadmin_euro
+ExtFile ./dirdat/account.dat
+Map amer.west.account, target euro.east.account;
+

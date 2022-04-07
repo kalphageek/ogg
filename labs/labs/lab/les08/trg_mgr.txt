@@ -1,0 +1,9 @@
+PORT 7909
+DynamicPortList 20100-20199
+PurgeOldExtracts ./dirdat/pe*, UseCheckPoints, MinKeepHours 2
+Autostart Replicat R*
+Autorestart Replicat *, WaitMinutes 1, Retries 3
+LagReportHours 1
+LagInfoMinutes 30
+LagCriticalMinutes 45
+

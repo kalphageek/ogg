@@ -1,0 +1,51 @@
+*+- Defgen version 5.0, Encoding UTF-8
+*
+* Definitions created/modified  2018-02-10 13:17
+*
+*  Field descriptions for each column entry:
+*
+*     1    Name
+*     2    Data Type
+*     3    External Length
+*     4    Fetch Offset
+*     5    Scale
+*     6    Level
+*     7    Null
+*     8    Bump if Odd
+*     9    Internal Length
+*    10    Binary Length
+*    11    Table Length
+*    12    Most Significant DT
+*    13    Least Significant DT
+*    14    High Precision
+*    15    Low Precision
+*    16    Elementary Item
+*    17    Occurs
+*    18    Key Column
+*    19    Sub Data Type
+*    20    Native Data Type
+*    21    Character Set
+*    22    Character Length
+*    23    LOB Type
+*    24    Partial Type
+*
+Database type: ORACLE
+Character set ID: UTF-8
+National character set ID: UTF-16
+Locale: neutral
+Case sensitivity: 14 14 14 14 14 14 14 14 14 14 14 14 11 14 14 14
+TimeZone: GMT
+*
+Definition for table EURO.EAST.CUSTMER
+Record length: 778
+Syskey: 0
+Columns: 8
+CUST_ID        134     13        0  0  0 1 0      8      8      8 0 0 0 0 1    0 1   3    2       -1      0 0 0
+NAME            64     50       12  0  0 1 0     50     50      0 0 0 0 0 1    0 0   0    1       -1      0 0 0
+MIDDLE_NAME     64     50       68  0  0 1 0     50     50      0 0 0 0 0 1    0 0   0    1       -1      0 0 0
+SURNAME         64     50      124  0  0 1 0     50     50      0 0 0 0 0 1    0 0   0    1       -1      0 0 0
+FULL_NAME       64    255      180  0  0 1 0    255    255      0 0 0 0 0 1    0 0   0    1       -1      0 0 0
+DATE_OF_BIRTH  192     19      440  0  0 1 0     19     19     19 0 5 0 0 1    0 0   0   12       -1      0 0 0
+NATIONALITY     64     50      462  0  0 1 0     50     50      0 0 0 0 0 1    0 0   0    1       -1      0 0 0
+EMAIL           64    255      518  0  0 1 0    255    255      0 0 0 0 0 1    0 0   0    1       -1      0 0 0
+End of definition

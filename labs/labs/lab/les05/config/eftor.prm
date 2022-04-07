@@ -1,0 +1,8 @@
+SourceIsTable
+UserIdAlias oggadmin_root
+RMTHOST easthost, MGRPORT 7909
+RMTFILE ./dirdat/account.dat, purge
+table amer.west.account;
+RMTFILE ./dirdat/branch.dat, purge
+table amer.west.branch
+

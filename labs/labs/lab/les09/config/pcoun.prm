@@ -1,0 +1,6 @@
+Extract pcoun
+RmtHost easthost, Mgrport 7909, Compress
+RmtTrail ./dirdat/cs
+Passthru
+Table amer.west.country
+

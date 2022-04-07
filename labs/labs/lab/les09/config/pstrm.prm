@@ -1,0 +1,6 @@
+Extract pstrm
+RmtHost easthost, Mgrport 7909, Compress
+RmtTrail ./dirdat/rs
+Passthru
+Table amer.west.account;
+

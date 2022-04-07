@@ -66,7 +66,7 @@ Report At 00:01
 ReportRollover At 00:01
 -- 1분 단위로 Rate을 만들어라
 ReportCount Every 60 Seconds, Rate
--- 1000개 단위로 리포트 하라
+-- Record 1000개 단위로 리포트 하라
 ReportCount Every 1000 Records
 
 Table AMER.WEST.ACCOUNT;
@@ -146,4 +146,63 @@ Map SALES.PRODUCTS, Target SALES.PRODUCTS,
 -- AMOUNT 컬럼에 값이 있고, Null이 아니면
 Map SALES.ORDERS, Target SALES.ORDERS,
     Where (AMOUNT = @PRESENT AND AMOUNT <> @NULL);
+```
+
+## Macro
+1. Macro sample
+```sql
+$ vi ./dirprm/make_date.mac 
+Macro #make_date
+Params (#year, #month, #day)
+BEGIN
+@DATE("YYYY-MM-DD", "CC", @IF(#year < 50, 20, 19), 
+"YY", #year, "MM", #month, "DD", #day)
+End;
+```
+2. Use sample
+```sql
+Include /ggs/dirprm/make_date.mac
+...
+Map SALES.ACCT, Target REPORT.ACCOUNT,
+ColMap
+( TargetCol1 = SourceCol1,
+Order_Date = #make_date(Order_YR,Order_MO,Order_DAY),
+Ship_Date = #make_date(Ship_YR,Ship_MO,Ship_DAY)
+);
+```
+
+## Token
+1. Set Sample
+```sql
+Extract extdemo
+Table SALES.PRODUCT, TOKENS (
+    (Token name) TKN-OSUSER = @GETENV ('GGENVIRONMENT', 
+    'OSUSERNAME'), 
+    TKN-DOMAIN = @GETENV ('GGENVIRONMENT', 'DOMAINNAME'), 
+    TKN-COMMIT-TS = @GETENV ('GGHEADER', 'COMMITTIMESTAMP'), 
+    TKN-BA-IND = @GETENV ('GGHEADER', 
+    'BEFOREAFTERINDICATOR'), 
+    TKN-TABLE = @GETENV ('GGHEADER', 'TABLENAME'), 
+    TKN-OP-TYPE = @GETENV ('GGHEADER', 'OPTYPE'), 
+    TKN-LENGTH = @GETENV ('GGHEADER', 'RECORDLENGTH'), 
+    TKN-DB-VER = @GETENV ('DBENVIRONMENT', 'DBVERSION')
+); 
+```
+2. Use Sample
+```sql
+Map SALES.ORDER, Target REPORT.ORDER_HISTORY,
+    ColMap (USEDEFAULTS,
+        TKN_NUMRECS = @TOKEN ('TKN-NUMRECS');
+Map SALES.CUSTOMER, Target REPORT.CUSTOMER_HISTORY,
+    ColMap (USEDEFAULTS,
+        TRAN_TIME = @TOKEN ('TKN-COMMIT-TS'),
+OP_TYPE = @TOKEN ('TKN-OP-TYPE'), 
+    BEFORE_AFTER_IND = @TOKEN ('TKN-BA-IND'),
+        TKN_ROWID = @TOKEN ('TKN-ROWID'));
+```
+## Compression
+1. Set Sample
+```sql
+--750 byte가 넘을 때만 압축하도록 한다
+RmtHost newyork, MgrPort 7809, Compress, CompressThreshold 750
 ```

@@ -1,0 +1,6 @@
+Replicat ruevt
+DiscardFile ./dirrpt/ruevt.dsc, Purge
+UserIDAlias oggadmin_euro
+MAP amer.west.event_trigger, TARGET euro.east.event_trigger,
+FILTER(ON INSERT, @streq(TRIGGER_TYPE,'PERFORM BACKUP')), EVENTACTIONS (SHELL '/home/oracle/rman/rman_bck.sh', REPORT);
+

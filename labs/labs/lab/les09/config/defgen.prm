@@ -1,0 +1,4 @@
+defsfile ./dirdef/usr_tgt.def, purge
+UserIdAlias  oggadmin_euro
+SOURCECATALOG EURO
+Table east.custmer;

@@ -1,0 +1,5 @@
+Replicat rmap
+Discardfile ./dirrpt/rmap.dsc, purge
+UserIdAlias oggadmin_euro 
+Map euro.east.custmer, Target euro.east.custmer;
+

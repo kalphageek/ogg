@@ -1,0 +1,6 @@
+Replicat reast
+UserIdAlias oggadmin_euro
+DBOPTIONS Integratedparams(parallelism 6)
+AssumeTargetDefs
+DiscardFile ./dirrpt/rpdw.dsc, Purge
+Map amer.west.*, target euro.east.*;

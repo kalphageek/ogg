@@ -1,0 +1,5 @@
+Extract pwest
+UserIDAlias oggadmin_root
+rmthost easthost, mgrport 7909
+rmttrail ./dirdat/pe
+Table AMER.WEST.*;
