@@ -28,6 +28,11 @@ $ ./logdump
 > string <data>
 # 지금부터 실행하는 내용을 log로 남기겠다
 > log to mysession.log
+
+# Token 정보 보기
+> UserToken On
+> UserToken Detail
+> n
 ```
 * IO Time : 소스DB의 commit 시간
 * IOType : DML 종류
