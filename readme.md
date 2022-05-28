@@ -4,7 +4,7 @@
 * oracle / 
 
 ## 참조
-* Trail file : https://docs.oracle.com/goldengate/c1221/gg-winux/GWUAD/oracle-goldengate-trail.htm#GWUAD741
+* Trail file : [https://docs.oracle.com/goldengate/c1221/gg-winux/GWUAD/oracle-goldengate-trail.htm#GWUAD741](https://docs.oracle.com/goldengate/c1221/gg-winux/GWUAD/oracle-goldengate-trail.htm#GWUAD741)
 * GGSCI CMD : https://docs.oracle.com/goldengate/c1221/gg-winux/GWURF/summary-oracle-goldengate-commands.htm#GWURF884
 * LogDump Utility : https://docs.oracle.com/goldengate/1212/gg-winux/GLOGD/wu_logdump.htm#GLOGD107
 * Integrated Replicat View : https://docs.oracle.com/goldengate/1212/gg-winux/GLOGD/wu_logdump.htm#GLOGD107
